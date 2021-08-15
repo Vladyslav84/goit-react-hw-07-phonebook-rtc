@@ -6,16 +6,17 @@ import { getContacts, getFilter } from '../../redux/selectors';
 import { useFetchContactsQuery, useDeleteContactMutation } from '../../redux/operations';
 import contactsApi from '../../redux/operations';
 import store from '../../redux/store';
-import  filter  from '../Filter/Filter';
+// import { getFilter } from '../../redux/selectors';
+
 
 
 export default function ContactList  ()  {
   
   const { data: allContacts } = useFetchContactsQuery();
   const [deleteContact, { data, isLoading: isDeleting }] = useDeleteContactMutation();
-  // const qq = useSelector(store);
+  const qq = useSelector(getFilter);
   // const filter = store.getState().filter;
-  // console.log(filterSlice)
+  console.log(qq)
   // const dispatch = useDispatch();
   // useEffect(() => , [dispatch]);
 //   async function dd (allContacts) {
@@ -30,7 +31,7 @@ export default function ContactList  ()  {
   return (
     <ul className={s.contactList}>
       { allContacts && allContacts.filter(contact =>
-        contact.name.toLocaleLowerCase().includes(filter)).map((user) => (
+        contact.name.toLocaleLowerCase().includes(qq)).map((user) => (
              
         <li key={user.id} className={s.contactitem} >
           <span>{user.name} {user.number}</span>

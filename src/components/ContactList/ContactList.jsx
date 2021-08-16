@@ -1,22 +1,21 @@
 import React, { useEffect } from 'react';
 import s from './ContactList.module.css';
 import {  useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilter } from '../../redux/selectors';
+import { getContacts, getFilter,getfilteredContacts } from '../../redux/selectors';
 // import * as operations from '../../redux/operations';
 import { useFetchContactsQuery, useDeleteContactMutation } from '../../redux/operations';
 import contactsApi from '../../redux/operations';
 import store from '../../redux/store';
 // import { getFilter } from '../../redux/selectors';
 
-
+console.log(getfilteredContacts())
 
 export default function ContactList  ()  {
   
   const { data: allContacts } = useFetchContactsQuery();
   const [deleteContact, { data, isLoading: isDeleting }] = useDeleteContactMutation();
-  const qq = useSelector(getFilter);
+  const filter = useSelector(getFilter);
   // const filter = store.getState().filter;
-  console.log(qq)
   // const dispatch = useDispatch();
   // useEffect(() => , [dispatch]);
 //   async function dd (allContacts) {
@@ -31,7 +30,7 @@ export default function ContactList  ()  {
   return (
     <ul className={s.contactList}>
       { allContacts && allContacts.filter(contact =>
-        contact.name.toLocaleLowerCase().includes(qq)).map((user) => (
+        contact.name.toLocaleLowerCase().includes(filter)).map((user) => (
              
         <li key={user.id} className={s.contactitem} >
           <span>{user.name} {user.number}</span>

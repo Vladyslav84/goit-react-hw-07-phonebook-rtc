@@ -8,7 +8,7 @@ import contactsApi from '../../redux/operations';
 import store from '../../redux/store';
 // import { getFilter } from '../../redux/selectors';
 
-console.log(getfilteredContacts())
+// console.log(getfilteredContacts())
 
 export default function ContactList  ()  {
   

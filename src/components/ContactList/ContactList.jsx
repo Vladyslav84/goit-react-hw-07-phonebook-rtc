@@ -15,17 +15,6 @@ export default function ContactList  ()  {
   const { data: allContacts } = useFetchContactsQuery();
   const [deleteContact, { data, isLoading: isDeleting }] = useDeleteContactMutation();
   const filter = useSelector(getFilter);
-  // const filter = store.getState().filter;
-  // const dispatch = useDispatch();
-  // useEffect(() => , [dispatch]);
-//   async function dd (allContacts) {
-//         const filteredContactList = await allContacts.filter(contact =>
-//         contact.name.toLocaleLowerCase().includes(''));
-//     return filteredContactList;
-// }
-// console.log(dd (allContacts))
-  // const filteredContactList = allContacts.filter(contact =>
-  //   contact.name.toLocaleLowerCase().includes(''));
  
   return (
     <ul className={s.contactList}>
